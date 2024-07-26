@@ -184,6 +184,9 @@ Also, you may choose the serial port below for serial monitor output (CONSOLE).
 // shall the mow motor be activated for normal operation? Deactivate this option for GPS tests and path tracking running tests
 #define ENABLE_MOW_MOTOR true // Default is true, set false for testing purpose to switch off mow motor permanently
 
+#define ADAPTIVE_SPEED false                  // Speed is controlled by mow motor load
+#define ADAPTIVES_SPEED_MINCURRENT 1.50       // Minimium current to start adaptive speed
+#define ADAPTIVES_SPEED_MAXCURRENT 2.75       // Maximum current to stop adaptive speed
 
 // ------ WIFI module (ESP8266 ESP-01 with ESP firmware 2.2.1) --------------------------------
 // NOTE: all settings (maps, absolute position source etc.) are stored in your phone - when using another
@@ -324,6 +327,8 @@ Also, you may choose the serial port below for serial monitor output (CONSOLE).
 #define GPS_CONFIG   true     // configure GPS receiver (recommended - requires GPS wire fix above! otherwise firmware will stuck at boot!)
 //#define GPS_CONFIG   false  // do not configure GPS receiver (no GPS wire fix required)
 
+#define INVALID_GPS_TIMEOUT 30.0 // time in seconds to navigate with invalid GPS
+
 #define GPS_CONFIG_FILTER   true     // use signal strength filter? (recommended to get rid of 'FIX jumps') - adjust filter settings below
 //#define GPS_CONFIG_FILTER   false     // use this if you have difficulties to get a FIX solution (uses ublox default filter settings)
 #define CPG_CONFIG_FILTER_MINELEV  10   // Min SV elevation degree: 14 (high elevation, less robust), 10 (low elevation, robust) 
@@ -384,6 +389,13 @@ Also, you may choose the serial port below for serial monitor output (CONSOLE).
 #define STANLEY_CONTROL_P_SLOW    1.1   // 1.0 for path tracking control (angular gain) when docking tracking
 #define STANLEY_CONTROL_K_SLOW    0.1   // 0.2 for path tracking control (lateral gain) when docking tracking
 
+#define HEADING_ERROR_SPEED_FACTOR 5.0  // slow down linear speed based on heading error: disabled [0 - ∞] only straight
+
+//#define STANLEY_LOOK_AHEAD true
+//#define STANLEY_LOOK_AHEAD_DISTANCE 10.0
+
+#define SET_PERIMETER_SPEED true    // set different speed for perimert
+#define PERIMETER_SPEED  0.15       // perimeter speed m/s
 
 // ----- other options --------------------------------------------
 
